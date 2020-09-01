@@ -25,7 +25,7 @@ public class FinnBlackJack {
         dealer.setName("Dealer");
     }
 
-    public void dealCards() {
+    public void dealCards() throws EmptyDeckException {
         deck.shuffleDeck();
         player.addCard(deck.drawCard());
         dealer.addCard(deck.drawCard());
@@ -39,7 +39,7 @@ public class FinnBlackJack {
         return playerHand + "\n" + dealerHand;
     }
 
-    public String play() {
+    public String play() throws EmptyDeckException {
         /**
          * Play a simple game of FinnBlackJack
          * The player draws first until he has minimum 17
