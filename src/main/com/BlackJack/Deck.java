@@ -32,8 +32,6 @@ public class Deck {
         String line;
         File file = new File(filepath);
         if (file.isFile()) {
-            // create BufferedReader and read data from csv
-
             BufferedReader txtReader = new BufferedReader(new FileReader(filepath));
             line = txtReader.readLine();
             line = line.replace(" ", "");
@@ -56,8 +54,15 @@ public class Deck {
         shuffleDeck();
     }
 
-    public Card drawCard() {
+    public Card drawCard() throws EmptyDeckException{
+        if (isEmpty()) {
+            throw new EmptyDeckException();
+        }
         return this.deck.remove(0);
+    }
+
+    public boolean isEmpty() {
+        return this.deck.size() == 0;
     }
 
     public String toString() {
