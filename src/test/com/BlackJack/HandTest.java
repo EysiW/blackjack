@@ -46,4 +46,33 @@ public class HandTest {
         }
         assertTrue(hand4.isBlackJack());
     }
+
+    @Test
+    public void scores() {
+        Hand hand1 = new Hand();
+        hand1.addCard(new Card(1, 1));
+        hand1.addCard(new Card(1, 6));
+        assertEquals(17, hand1.calculateScore());
+
+        Hand hand2 = new Hand();
+        hand2.addCard(new Card(2, 6));
+        hand2.addCard(new Card(2, 1));
+        assertEquals(17, hand2.calculateScore());
+
+        Hand hand3 = new Hand();
+        hand3.addCard(new Card(3, 11));
+        hand3.addCard(new Card(3, 6));
+        hand3.addCard(new Card(3, 2));
+        assertEquals(18, hand3.calculateScore());
+
+        Hand hand4 = new Hand();
+        hand4.addCard(new Card(0, 12));
+        hand4.addCard(new Card(2, 13));
+        assertEquals(20, hand4.calculateScore());
+
+        Hand hand5 = new Hand();
+        hand5.addCard(new Card(3, 13));
+        hand5.addCard(new Card(0, 13));
+        assertEquals(20, hand5.calculateScore());
+    }
 }
