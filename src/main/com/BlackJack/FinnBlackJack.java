@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FinnBlackJack {
-    public Deck deck;
+    private Deck deck;
     private Player player;
     private Dealer dealer;
     private int playerLimit = 17;
@@ -15,6 +15,7 @@ public class FinnBlackJack {
         player.setName("Sam");
         dealer = new Dealer();
         dealer.setName("Dealer");
+        deck.shuffleDeck();
     }
 
     public FinnBlackJack(String deckfile) throws IOException, InvalidCardException {
@@ -26,7 +27,7 @@ public class FinnBlackJack {
     }
 
     public void dealCards() throws EmptyDeckException {
-        deck.shuffleDeck();
+        //deck.shuffleDeck();
         player.addCard(deck.drawCard());
         dealer.addCard(deck.drawCard());
         player.addCard(deck.drawCard());
@@ -43,7 +44,8 @@ public class FinnBlackJack {
         /**
          * Play a simple game of FinnBlackJack
          * The player draws first until he has minimum 17
-         * If the player do not bust, the dealer draws until he wins
+         * If the player do not bust, the dealer draws until he win or loose
+         * Draw is not possible. The dealer wins if both players start with two aces
          */
         dealCards();
         // Check if player has blackjack
@@ -54,7 +56,7 @@ public class FinnBlackJack {
         while(player.handScore() < playerLimit) {
             player.addCard(deck.drawCard());
         }
-        // Player loose if score is higher than 21, wins if he scores a blackjack
+        // Player loose if score is higher than 21, wins if he scores a blackjack, else dealer draws cards
         if (player.handScore() > 21) {
             return dealer.getName();
         }
@@ -62,6 +64,7 @@ public class FinnBlackJack {
             return player.getName();
         }
         int dealerLimit = player.handScore();
+        // Dealer draws cards until the score is higher than the players score
         while (dealer.handScore() <= dealerLimit) {
             dealer.addCard(deck.drawCard());
         }
