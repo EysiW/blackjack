@@ -2,7 +2,6 @@ package com.BlackJack;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, InvalidCardException {
@@ -19,7 +18,7 @@ public class Main {
 			}
 		} else {
 			try {
-				FinnBlackJack game = new FinnBlackJack("deck.txt");
+				FinnBlackJack game = new FinnBlackJack();
 				String winner = game.play();
 				System.out.println(winner);
 				System.out.println(game);
