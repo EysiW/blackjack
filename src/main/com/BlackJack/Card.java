@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class Card {
     private int suit;
     private int rank;
-    private Pattern pattern = Pattern.compile("[CDHS]([1-9]|10|A)$");
+    private Pattern pattern = Pattern.compile("[CDHS]([1-9]|10|[AJQK])$");
 
     public Card(int suit, int rank) {
         this.suit = suit;
@@ -20,9 +20,10 @@ public class Card {
             throw new InvalidCardException();
         }
         char[] ranks = {'A', '2', '3', '4', '5', '6',
-                '7', '8', '9', '0','J', 'Q', 'K'};
+                '7', '8', '9', '0', 'J', 'Q', 'K'};
         char[] suits = {'C', 'D', 'H', 'S'};
         char suit = s.charAt(0);
+        char rank = s.charAt(1);
         for (int i = 0; i <= 3; i++) {
             if (suit == suits[i]) {
                 this.suit = i;
