@@ -20,7 +20,7 @@ public class Deck {
     }
 
     public void buildDeck(){
-        this.deck = new ArrayList<Card>(52);
+        this.deck = new ArrayList<>(52);
         for (int i = 0; i <= 3; i++) {
             for (int j = 1; j <= 13; j++) {
                 this.deck.add(new Card(i, j));
@@ -38,7 +38,7 @@ public class Deck {
             String[] cards = line.split(",");
             txtReader.close();
             int size = cards.length;
-            this.deck = new ArrayList<Card>(size);
+            this.deck = new ArrayList<>(size);
             for (String s : cards) {
                 this.deck.add(new Card(s));
             }

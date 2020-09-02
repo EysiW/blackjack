@@ -12,10 +12,12 @@ public class Card {
         this.rank = rank;
     }
 
+    // Create a card with a string
     public Card(String s) throws InvalidCardException{
         int len = s.length();
         Matcher matcher = pattern.matcher(s);
         boolean matchFound = matcher.find();
+        // Check if it is a valid card, string = suit+rank
         if (!matchFound) {
             throw new InvalidCardException();
         }
